@@ -4,7 +4,6 @@ variable "avail_zone" {}
 variable "env_prefix" {}
 variable "my_ip" {}
 variable "instance_type" {}
-#variable "public_key_location" {}
 variable "key_name" {}
 variable "bucket_name" {}
 variable "dynamoDB_name" {}

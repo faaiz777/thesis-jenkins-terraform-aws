@@ -42,7 +42,6 @@ module "myapp-server" {
   #vpc_id              = aws_vpc.myapp_vpc.id
   my_ip               = var.my_ip
   key_name            = var.key_name
-  #public_key_location = var.public_key_location
   instance_type       = var.instance_type
   subnet_id           = module.myapp-subnet.subnet.id
   avail_zone          = var.avail_zone
