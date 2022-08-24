@@ -24,3 +24,8 @@ resource "aws_route_table" "myapp_route_table" {
         Name: "${var.env_prefix}-rtb"
     }
 }
+
+resource "aws_route_table_association" "a-rtb-subnet" {
+  subnet_id      = aws_subnet.myapp_subnet_1.id
+  route_table_id = aws_route_table.myapp_route_table.id
+}
