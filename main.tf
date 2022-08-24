@@ -16,16 +16,16 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region     = "eu-central-1"
-  access_key = var.access_key
-  secret_key = var.secret_key
+  #access_key = var.access_key
+  #secret_key = var.secret_key
   #token = var.token
 }
 
 
 module "vpc" {
-  source         = "./modules/vpc"
-  vpc_cidr_block = var.vpc_cidr_block
-  env_prefix     = var.env_prefix
+  source            = "./modules/vpc"
+  vpc_cidr_block    = var.vpc_cidr_block 
+  env_prefix        = var.env_prefix
 }
 
 module "myapp-subnet" {
@@ -33,15 +33,15 @@ module "myapp-subnet" {
   subnet_cidr_block = var.subnet_cidr_block
   avail_zone        = var.avail_zone
   env_prefix        = var.env_prefix
-  vpc_id            = module.vpc.vpc
+  vpc_id            = module.vpc.vpc.id
   vpc_cidr_block    = var.vpc_cidr_block
 }
 
 
 module "myapp-server" {
-  source     = "./modules/webserver"
-  env_prefix = var.env_prefix
-  vpc_id     = module.vpc.vpc
+  source              = "./modules/webserver"
+  env_prefix          = var.env_prefix
+  vpc_id              = module.vpc.vpc.id
   #vpc_id              = aws_vpc.myapp_vpc.id
   my_ip               = var.my_ip
   key_name            = var.key_name
