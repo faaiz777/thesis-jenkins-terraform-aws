@@ -1,6 +1,6 @@
 #variable "access_key" {}
 #variable "secret_key" {}
-variable "token" {}
+#variable "token" {}
 variable "vpc_cidr_block" {}
 variable "subnet_cidr_block" {}
 variable "avail_zone" {}
