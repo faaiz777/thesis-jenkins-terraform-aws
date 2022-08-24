@@ -7,7 +7,7 @@
 
 #Exclude all .tfvars files , which is likely to contain sensitive data.
 
-*.tfvars
+#*.tfvars
 
 #ignore crash logs
 crash.log
