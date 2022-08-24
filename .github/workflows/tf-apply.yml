@@ -21,7 +21,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init -backend-config="access_key=${{ secrets.ACCESS_KEY }}" -backend-config="secret_key=SECRET_KEY"
+        run: terraform init 
 
       - name: Terraform Plan
         id: plan
