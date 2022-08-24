@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "terraform_state" {
   bucket        = var.bucket_name # REPLACE WITH YOUR BUCKET NAME
-  #force_destroy = true
+  force_destroy = true
   
   lifecycle {
     prevent_destroy = false
