@@ -1,17 +1,17 @@
-# terraform {
-#   #############################################################
-#   ## AFTER RUNNING TERRAFORM APPLY (WITH LOCAL BACKEND)
-#   ## YOU WILL UNCOMMENT THIS CODE THEN RERUN TERRAFORM INIT
-#   ## TO SWITCH FROM LOCAL BACKEND TO REMOTE AWS BACKEND
-#   #############################################################
-#   backend "s3" {
-#     bucket         = "faaiz-terraformstatebucket" # REPLACE WITH YOUR BUCKET NAME
-#     key            = "global/s3/terraform.tfstate"
-#     region         = "eu-central-1"
-#     dynamodb_table = "state-lock-table"
-#     encrypt        = true
-#   }
-# }
+terraform {
+  #############################################################
+  ## AFTER RUNNING TERRAFORM APPLY (WITH LOCAL BACKEND)
+  ## YOU WILL UNCOMMENT THIS CODE THEN RERUN TERRAFORM INIT
+  ## TO SWITCH FROM LOCAL BACKEND TO REMOTE AWS BACKEND
+  #############################################################
+  backend "s3" {
+    bucket         = "faaiz-terraformstatebucket" # REPLACE WITH YOUR BUCKET NAME
+    key            = "global/s3/terraform.tfstate"
+    region         = "eu-central-1"
+    dynamodb_table = "state-lock-table"
+    encrypt        = true
+  }
+}
 
 # Configure the AWS Provider
 provider "aws" {
@@ -23,9 +23,9 @@ provider "aws" {
 
 
 module "vpc" {
-  source            = "./modules/vpc"
-  vpc_cidr_block    = var.vpc_cidr_block 
-  env_prefix        = var.env_prefix
+  source         = "./modules/vpc"
+  vpc_cidr_block = var.vpc_cidr_block
+  env_prefix     = var.env_prefix
 }
 
 module "myapp-subnet" {
@@ -39,9 +39,9 @@ module "myapp-subnet" {
 
 
 module "myapp-server" {
-  source              = "./modules/webserver"
-  env_prefix          = var.env_prefix
-  vpc_id              = module.vpc.vpc
+  source     = "./modules/webserver"
+  env_prefix = var.env_prefix
+  vpc_id     = module.vpc.vpc
   #vpc_id              = aws_vpc.myapp_vpc.id
   my_ip               = var.my_ip
   key_name            = var.key_name

@@ -1,3 +1,3 @@
 output "vpc" {
-    value = aws_vpc.myapp_vpc.id
+    value = aws_vpc.myapp_vpc
 }
