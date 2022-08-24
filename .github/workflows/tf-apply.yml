@@ -78,11 +78,8 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       #run: terraform init
-<<<<<<< HEAD
       run: terraform init -backend-config="access_key=${{ secrets.ACCESS_KEY }}" -backend-config="secret_key=${{ secrets.SECRET_KEY }}"
-=======
-      run: terraform init -backend-config="access_key=AKIA53DLQWDABQ5BXZML" -backend-config="secret_key=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"
->>>>>>> 472800ffc86bdbd1f776b080d1caa615199ef1d3
+
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
