@@ -59,8 +59,8 @@ module "myapp-server" {
   avail_zone          = var.avail_zone
 }
 
-module "terraform-backend" {
-  source        = "./modules/remoteBackend"
-  bucket_name   = var.bucket_name
-  dynamoDB_name = var.dynamoDB_name
-}
+# module "terraform-backend" {
+#   source        = "./modules/remoteBackend"
+#   bucket_name   = var.bucket_name
+#   dynamoDB_name = var.dynamoDB_name
+# }
