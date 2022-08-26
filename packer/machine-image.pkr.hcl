@@ -54,8 +54,8 @@ build {
   }
 
   provisioner "file" {
-    source = "./cocktails.service"
-    destination = "/tmp/cocktails.service"
+    source = "./sample-nodeApp.service"
+    destination = "/tmp/sample-nodeApp.service"
   }
 
   provisioner "shell" {
