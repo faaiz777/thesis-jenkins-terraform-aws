@@ -6,7 +6,7 @@ resource "aws_security_group" "myapp-sg"{
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = [var.my_ip]
+        cidr_blocks = ["0.0.0.0/0"]
     }
 
     ingress {
@@ -25,7 +25,7 @@ resource "aws_security_group" "myapp-sg"{
   }
 
   tags = {
-    Name = "${var.env_prefix}-sg"
+    Name = "Jenkins-sg"
   }
 }
 
@@ -54,15 +54,15 @@ data "aws_ami" "latest-Amazon-linux-image"{
     }
 }
 
-resource "tls_private_key" "example" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
+# resource "tls_private_key" "example" {
+#   algorithm = "RSA"
+#   rsa_bits  = 4096
+# }
 
-resource "aws_key_pair" "generated_key" {
-  key_name   = var.key_name
-  public_key = tls_private_key.example.public_key_openssh
-}
+# resource "aws_key_pair" "generated_key" {
+#   key_name   = var.key_name
+#   public_key = tls_private_key.example.public_key_openssh
+# }
 
 
 resource "aws_instance" "myapp-server" {
@@ -75,12 +75,13 @@ resource "aws_instance" "myapp-server" {
     availability_zone = var.avail_zone
 
     associate_public_ip_address = true
-    key_name = aws_key_pair.generated_key.key_name
+    #key_name = aws_key_pair.generated_key.key_name
+    key_name = "Jenkins"
 
     user_data = file("entry-script.sh")
 
     tags = {
-        Name = "${var.env_prefix}-server"
+        Name = "Jenkins-server"
     }
 
 } 
