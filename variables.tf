@@ -5,3 +5,5 @@ variable "instance_type" {}
 variable "key_name" {}
 variable "bucket_name" {}
 variable "dynamoDB_name" {}
+variable "aws_access_id" {}
+variable "aws_secret_code" {}

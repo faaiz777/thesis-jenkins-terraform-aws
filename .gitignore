@@ -11,3 +11,12 @@
 
 #ignore crash logs
 crash.log
+
+#aws_creds
+aws_keys.csv
+
+id_rsa.pub
+id_rsa
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
